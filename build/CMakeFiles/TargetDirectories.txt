@@ -1,0 +1,3 @@
+/home/timnogga/vci_extension/build/CMakeFiles/OrbbecInfo.dir
+/home/timnogga/vci_extension/build/CMakeFiles/edit_cache.dir
+/home/timnogga/vci_extension/build/CMakeFiles/rebuild_cache.dir

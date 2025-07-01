@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/OrbbecInfo.dir/main.cpp.o CMakeFiles/OrbbecInfo.dir/src/Camera.cpp.o -o bin/OrbbecInfo  -Wl,-rpath,/home/timnogga/OrbbecSDK/lib/linux_x64 /home/timnogga/OrbbecSDK/lib/linux_x64/libOrbbecSDK.so 
