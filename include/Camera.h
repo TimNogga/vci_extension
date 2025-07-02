@@ -22,7 +22,7 @@ public:
     bool         HasColor()         const;
     CameraInfo   Info()             const;
 
-private:
+private: //now with privates
     int                                   id_;
     std::shared_ptr<ob::Context>          ctx_;
     std::shared_ptr<ob::Device>           dev_;
