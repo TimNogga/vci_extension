@@ -16,16 +16,25 @@ public:
     explicit Camera(int id);
     ~Camera();
 
-    int          Id()               const;
-    std::string  SerialNumber()     const;
-    std::string  DeviceName()       const;
-    bool         HasColor()         const;
-    CameraInfo   Info()             const;
+    int   Id()           const;
+    std::string SerialNumber() const;
+    std::string DeviceName()   const;
+    bool  HasColor()      const;
+    CameraInfo Info()     const;
 
-private: //now with privates
-    int                                   id_;
-    std::shared_ptr<ob::Context>          ctx_;
-    std::shared_ptr<ob::Device>           dev_;
+    void captureFramesRGB(const std::shared_ptr<ob::ColorFrame>& f, int idx) const;
+    void captureFramesDepth(const std::shared_ptr<ob::DepthFrame>& f, int idx) const;
+    void captureFrames(const std::shared_ptr<ob::ColorFrame>& f,
+                       const std::shared_ptr<ob::DepthFrame>& d,
+                       int idx) const;
+
+    static void CaptureSingle(int camIndex, int Nsets, int timeoutMs = 1000);
+    
+
+private:
+    int                             id_;
+    std::shared_ptr<ob::Context>    ctx_;
+    std::shared_ptr<ob::Device>     dev_;
 };
 
-#endif
+#endif // CAMERA_H

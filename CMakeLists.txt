@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # ------------------------------------------------------------------------- #
 # Location of the SDK – change this one line if your tree moves
-set(OrbbecSDK_DIR "/home/timnogga/OrbbecSDK" CACHE PATH "")
+set(OrbbecSDK_DIR "/Users/timnogga/arbeit/OrbbecSDK" CACHE PATH "")
 
 if (NOT EXISTS "${OrbbecSDK_DIR}/OrbbecSDKConfig.cmake")
     message(FATAL_ERROR
@@ -16,7 +16,8 @@ if (NOT EXISTS "${OrbbecSDK_DIR}/OrbbecSDKConfig.cmake")
 endif ()
 
 list(APPEND CMAKE_PREFIX_PATH "${OrbbecSDK_DIR}")
-find_package(OrbbecSDK REQUIRED CONFIG)          # -> OrbbecSDK::OrbbecSDK
+find_package(OrbbecSDK REQUIRED CONFIG) 
+find_package(OpenCV REQUIRED)         # -> OrbbecSDK::OrbbecSDK
 
 # ------------------------------------------------------------------------- #
 file(GLOB SRC CONFIGURE_DEPENDS src/*.cpp)
@@ -28,11 +29,13 @@ add_executable(OrbbecInfo
 
 target_include_directories(OrbbecInfo PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${OpenCV_INCLUDE_DIRS}
 )
 
 target_link_libraries(OrbbecInfo PRIVATE
     OrbbecSDK::OrbbecSDK
+    ${OpenCV_LIBS} 
 )
 
 set_target_properties(OrbbecInfo PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")

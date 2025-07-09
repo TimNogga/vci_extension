@@ -1,23 +1,13 @@
 #include <iostream>
+#include "libobsensor/ObSensor.hpp"
+#include "libobsensor/hpp/Error.hpp"
 #include "Camera.h"
 
-int main() {
-    try {
-        ob::Context ctx;
-        auto list = ctx.queryDeviceList();
-        int n = list->deviceCount();
-        std::cout << "found " << n << " device(s)\n";
-        for (int i = 0; i < n; ++i) {
-            Camera cam(i);
-            auto    info = cam.Info();
-            std::cout << "cam[" << cam.Id() << "]  SN=" << info.serial
-                      << "  name=" << info.name
-                      << "  color=" << (info.has_color ? "yes" : "no") << '\n';
-        }
-    }
-    catch (const std::exception& e) {
-        std::cerr << e.what() << '\n';
-        return 1;
-    }
+int main() try {
+    Camera::CaptureSingle(0, 10, 3000);
     return 0;
+}
+catch (const ob::Error& e) {
+    std::cerr << e.getMessage() << '\n';
+    return 1;
 }

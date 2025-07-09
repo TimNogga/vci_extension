@@ -1,0 +1,33 @@
+build/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Binaries and object files
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.dSYM/
+
+# Image dumps
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.tiff
+*.gif
+
+# Logs
+*.log
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# macOS clutter
+.DS_Store
